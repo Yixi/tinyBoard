@@ -34,13 +34,22 @@ class Tiny: UIView {
 
     
     func drawBLock(row:Int,column:Int){
-        var block = (self.rectSize!.width + self.gapSize!.width) * (CGFloat(7) - CGFloat(column)) + CGFloat(1)
+        var startX = (self.rectSize!.width + self.gapSize!.width) * (CGFloat(7) - CGFloat(column)) + CGFloat(1)
+        var startY = (self.rectSize!.height + self.gapSize!.height) * CGFloat(row) +  CGFloat(1)
+        var blockFrame = CGRectMake(startX, startY, self.rectSize!.width, self.rectSize!.height)
+        var color = UIColor.blueColor()
+        color.setFill()
+        UIColor.lightGrayColor().setStroke()
+        let path = UIBezierPath(rect: blockFrame)
+        path.fill()
+        path.stroke()
+        
     }
     
     
     func initRectSize(){
-        self.rectSize = CGSizeMake(30, 30)
-        self.gapSize = CGSizeMake(3, 3)
+        self.rectSize = CGSizeMake(34, 34)
+        self.gapSize = CGSizeMake(5, 5)
     }
     
     
