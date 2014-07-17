@@ -46,24 +46,23 @@ class Tiny: UIView {
     {
         // Drawing code
        
-//        self.DrawPoint()
+        self.DrawPoint()
     }
     
     
     func DrawPoint(){
+        println(NSDate.date())
         for row in 0..<self.allRows!{
             for column in 0..<self.allColumn!{
                 self.drawBLock(Int(row), column:Int(column))
             }
         }
+        println(NSDate.date())
     }
     
-    func reDrawPoint(){
-        
-        self.DrawPoint()
-    }
     
     func drawBLock(row:Int,column:Int){
+
         var startX = Float(self.rectSize!.width + self.gapSize!.width) * Float(column)
         var startY = Float(self.rectSize!.height + self.gapSize!.height) * Float(row)
         
@@ -99,7 +98,7 @@ class Tiny: UIView {
         self.showChar(timeStruct.one, offsetX: 10, offsetY: 10)
         
         
-        self.timer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: "onUpdate", userInfo: nil, repeats: true)
+        self.timer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: "onUpdate", userInfo: nil, repeats: false)
         
     }
     
@@ -115,9 +114,9 @@ class Tiny: UIView {
     
     func onUpdate(){
         println("update")
-//        self.pointArea = Array(count:self.allColumn!, repeatedValue:[Int](count:self.allRows!,repeatedValue:0))
+        self.pointArea = Array(count:self.allColumn!, repeatedValue:[Int](count:self.allRows!,repeatedValue:0))
         self.showChar(self.timeStruct.two, offsetX: 10, offsetY: 10)
-        self.reDrawPoint()
+        self.setNeedsDisplay()
     }
     
     
