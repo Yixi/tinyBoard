@@ -408,6 +408,7 @@
 				4138F3D4197630B300F7795F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4138F3D5197630B300F7795F /* Build configuration list for PBXNativeTarget "tinyBoardTests" */ = {
 			isa = XCConfigurationList;
@@ -416,6 +417,7 @@
 				4138F3D7197630B300F7795F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

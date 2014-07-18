@@ -51,10 +51,12 @@ class Tiny: UIView {
     
     
     func DrawPoint(){
-        println(NSDate.date())
-        for row in 0..<self.allRows!{
-            for column in 0..<self.allColumn!{
+       println(NSDate.date())
+        for row in 0..<24{
+            for column in 0..<24{
+                
                 self.drawBLock(Int(row), column:Int(column))
+            
             }
         }
         println(NSDate.date())
@@ -65,21 +67,44 @@ class Tiny: UIView {
 
         var startX = Float(self.rectSize!.width + self.gapSize!.width) * Float(column)
         var startY = Float(self.rectSize!.height + self.gapSize!.height) * Float(row)
+
         
         var blockFrame = CGRectMake(startX, startY, self.rectSize!.width, self.rectSize!.height)
         var color:UIColor?
-        if self.pointArea[column][row] as Int == 0{
+        
+//        println(NSDate.date())
+//        var currentColor:Int = self.pointArea[column][row]
+//        println(NSDate.date())
+        
+        var currentColor = row % 2
+        
+        if currentColor == 0{
             color = UIColor.darkGrayColor()
         }else{
             color = UIColor.whiteColor()
         }
-//        var color = UIColor.darkGrayColor()
-        
         color!.setFill()
         color!.setStroke()
         let path = UIBezierPath(roundedRect: blockFrame, cornerRadius: 5.0)
         path.fill()
         path.stroke()
+        
+        
+//        var context:CGContextRef = UIGraphicsGetCurrentContext()
+        
+////        println(NSDate.date())
+////        var currentColor:Int = self.pointArea[column][row]
+////        println(NSDate.date())
+//        var currentColor = row % 2
+//        if  currentColor == 0{
+//            CGContextSetFillColorWithColor(context, UIColor.darkGrayColor().CGColor)
+//        }else{
+//            CGContextSetFillColorWithColor(context, UIColor.whiteColor().CGColor)
+//        }
+//    
+//        CGContextAddRect(context, blockFrame)
+//        CGContextFillPath(context)
+        
         
     }
     
@@ -91,11 +116,11 @@ class Tiny: UIView {
         self.allColumn = Int((self.frame.width + gapSize!.width) / (gapSize!.width + rectSize!.width))
         self.allRows = Int((self.frame.height + gapSize!.height) / (gapSize!.height + rectSize!.height))
         
-        self.pointArea = Array(count:self.allColumn!, repeatedValue:[Int](count:self.allRows!,repeatedValue:0))
+//        self.pointArea = Array(count:self.allColumn!, repeatedValue:[Int](count:self.allRows!,repeatedValue:0))
         
         
         
-        self.showChar(timeStruct.one, offsetX: 10, offsetY: 10)
+//        self.showChar(timeStruct.one, offsetX: 10, offsetY: 10)
         
         
         self.timer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: "onUpdate", userInfo: nil, repeats: false)
